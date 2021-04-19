@@ -1,0 +1,40 @@
+<mat-card>
+    <mat-form-field>
+        <input matInput [formControl]="playerNameFC" placeholder="Player Name" type="text">
+    </mat-form-field>
+    <button mat-mini-fab color="primary" (click)="addPlayer()" [disabled]="playerNameFC.invalid">
+        <mat-error *ngIf="playerNameFC.hasError('duplicate')">Duplicate Name</mat-error>
+        <mat-error *ngIf="playerNameFC.hasError('tooMany')">Too Many Players</mat-error>
+      <mat-icon>add</mat-icon>
+    </button>
+</mat-card>
+
+<mat-card class="score">
+    <table>
+        <thead>
+            <th>Name</th>
+            <th *ngFor="let score of holes">{{score}}</th>
+            
+            <th>In Score:</th>
+            
+            <th>Out Score:</th>
+            <th></th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let player of players; let i = index">
+                <td>{{player.name}}</td>
+                <td *ngFor="let score of holes">
+                    <input type="number"[id]="score" [(ngModel)]="player[score]" class="score-input">
+                </td>
+                <td class="total-cell">{{getInScore(player)}}</td>
+                <td class="total-cell">{{getOutScore(player)}}</td>
+                <td>
+                    <button mat-icon-button (click)="deletePlayer(player,i)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <button mat-raised-button color="primary" class="submit" (click)="submit()">Save</button>
+</mat-card>

@@ -1,0 +1,28 @@
+.course-card{
+    display:flex;
+    width: 100vh;
+    height: 100vh;
+    
+    
+}
+
+.course-list{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    margin-left: 10px;
+    
+}
+.course-image{
+    display: flex;
+    height: 300px;
+    width: 300px;
+}
+.course-list-item{
+
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    justify-content: center;
+  
+}

@@ -1,0 +1,11 @@
+<div class="container">
+    <mat-card class="course-card">
+        <mat-list class="course-list">
+            <mat-list-item class="course-list-item" *ngFor="let course of this.courses">
+                <div><h1>{{course.name}}</h1></div>
+                <div><img class="course-image" [src]="course.image" [routerLink]="'/'+course.id"></div>
+                
+            </mat-list-item>
+        </mat-list>
+    </mat-card>
+</div>

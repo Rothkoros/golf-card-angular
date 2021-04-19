@@ -1,0 +1,38 @@
+<div class="container" *ngIf="data">
+    <h1>{{data.name}}</h1>
+    <mat-card>
+            <table mat-table class="course-data" *ngIf="data">
+            <tbody>
+            <div class="game-data">
+            <th mat-header-cell class="holes-head">Holes :</th>
+            <td mat-cell class="list-items" *ngFor="let hole of data.holes"> 
+                <div class="stuff">{{hole.hole}}</div>
+            </td>
+            </div>
+            <div class="game-data">
+            <th mat-header-cell class="par-head">Par :</th>
+            <td mat-cell class="list-items"  *ngFor="let par of data.holes"> 
+                <div class="stuff">{{par.teeBoxes[0].par}}</div>
+            </td>
+            </div>
+            <div class="game-data">
+            <th mat-header-cell>Handicap :</th>
+            <td mat-cell class="list-items"  *ngFor="let handicap of data.holes"> 
+                <div class="stuff">{{handicap.teeBoxes[1].hcp}}</div>
+            </td>
+            </div>
+            </tbody>
+        </table>
+        <mat-form-field appearance="fill">
+            <mat-label>Select an option</mat-label>
+            <mat-select [(ngModel)]="teeType" name= "tee"(selectionChange)="getYards()">
+              <mat-option [value]="tee.name" *ngFor="let tee of teeTypes">{{tee.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <p>Yards: {{yardsArray}}</p>
+          <p>IN Yards: {{inYards}} Out Yards: {{outYards}}</p>
+
+
+    </mat-card>
+</div>
+<app-player></app-player>
